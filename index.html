@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solo Leveling Universe</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  .animate-fadeInUp { animation: fadeInUp 0.8s ease-out; }
+  .animate-pulse { animation: pulse 2s infinite; }
+
+  .bg-blur { backdrop-filter: blur(8px); }
+
+  .news-card:hover, .match-card:hover, .team-card:hover, .battle-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 87, 87, 0.4);
+    transition: all 0.3s ease;
+  }
+
+  .gradient-overlay {
+    background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+  }
+
+  .parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .hero {
+    background-image: url('imgs/Hero-img.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; 
+    display: flex;
+    align-items: flex-end; 
+    padding-bottom: 2rem; 
+}
+
+@media (max-width: 768px) {
+    .hero {
+        background-size: cover;
+        background-position: center;
+    }
+
+    .hero-content {
+        text-align: center; 
+        margin-bottom: 2rem; 
+    }
+
+    .hero h1 {
+    font-size: 3rem; 
+}
+
+.hero p {
+    font-size: 1.5rem; 
+}
+
+.responsive-btn {
+    font-size: 1.25rem; /* Default button size */
+    padding: 1rem 2rem; /* Default button padding */
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem; /* Smaller heading for tablets and smaller devices */
+    }
+
+    .hero p {
+        font-size: 1rem; /* Smaller paragraph text */
+    }
+
+    .responsive-btn {
+        font-size: 1rem; /* Smaller button text */
+        padding: 0.75rem 1.5rem; /* Smaller button padding */
+    }
+}
+
+@media (max-width: 576px) {
+    .hero h1 {
+        font-size: 1.5rem; /* Smallest heading for very small devices */
+    }
+
+    .hero p {
+        font-size: 0.875rem; /* Smallest paragraph text */
+    }
+
+    .responsive-btn {
+        font-size: 0.875rem; /* Smallest button text */
+        padding: 0.5rem 1rem; /* Smallest button padding */
+    }
+}
+}
+
+  footer {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.9));
+    color: white;
+    padding: 3rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  footer::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,0,0,0.1) 0%, rgba(255,0,0,0) 70%);
+    animation: pulse-bg 10s ease-in-out infinite;
+  }
+
+  @keyframes pulse-bg {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+  }
+
+  .footer-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(255,0,0,0.5);
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from { text-shadow: 0 0 5px rgba(255,0,0,0.5); }
+    to { text-shadow: 0 0 20px rgba(255,0,0,0.8), 0 0 35px rgba(255,0,0,0.6); }
+  }
+
+  .footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s, transform 0.3s;
+    display: inline-block;
+  }
+
+  .footer-links a:hover {
+    color: #ff5757;
+    transform: scale(1.1);
+  }
+
+  .footer-section {
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fade-in-up 0.5s ease-out forwards;
+  }
+
+  @keyframes fade-in-up {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .footer-icon {
+    font-size: 1.5rem;
+    color: white;
+    transition: color 0.3s, transform 0.3s;
+  }
+
+  .footer-icon:hover {
+    color: #ff5757;
+    transform: scale(1.2) rotate(15deg);
+  }
+
+  footer h5, footer h6 {
+    text-shadow: 0 0 10px red;
+  }
+
+  .footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s, text-shadow 0.3s;
+  }
+
+  .footer-links a:hover {
+    color: red;
+    text-shadow: 0 0 10px red;
+  }
+
+  .footer-icon {
+    font-size: 1.5rem;
+    color: white;
+    transition: color 0.3s, text-shadow 0.3s;
+  }
+
+  .footer-icon:hover {
+    color: red;
+    text-shadow: 0 0 10px red;
+  }
+
+  h2, h3 {
+    text-shadow: 0 0 10px red;
+  }
+
+
+  .team-card, .battle-card, .news-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .team-card .card-body, .battle-card .card-body, .news-card .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .team-card img, .battle-card img, .news-card img {
+    height: 200px;
+    object-fit: cover;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+  }
+
+  #particle-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .particle {
+    position: absolute;
+    background-color: rgba(255, 0, 0, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+  }
+
+  .parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/path-to-hero-image.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .navbar-nav .nav-link:hover {
+    color: #ff0000 !important;
+  }
+  .navbar .footer-links {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s;
+    padding: 0.5rem 1rem;
+}
+
+.navbar .footer-links a:hover {
+    color: #ff0000;
+}
+
+@media (max-width: 991px) {
+    .navbar .footer-links {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.footer-section .d-flex {
+    justify-content: center;
+}
+
+@media (max-width: 991px) {
+    .navbar .footer-links {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar .footer-links a {
+        padding: 0.5rem 0;
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-fadeInLeft {
+    animation: fadeInLeft 0.8s ease-out;
+}
+
+.delay-200 {
+    animation-delay: 200ms;
+}
+
+.delay-400 {
+    animation-delay: 400ms;
+}
+
+.team-card:hover, .battle-card:hover, .news-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 14px 28px rgba(255, 87, 87, 0.25), 0 10px 10px rgba(255, 87, 87, 0.22);
+}
+</style>
+</head>
+<body class="bg-black text-white">
+   <div id="particle-container"></div>
+   
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-transparent bg-blur">
+    <div class="container d-flex align-items-center justify-content-between">
+        <a class="navbar-brand" href="#">
+            <img src="imgs/logo.png" alt="Logo" width="50" height="30" class="ms-4">
+        </a>
+        <div class="navbar-collapse justify-content-end" id="navbarNav">
+            <div class="footer-links">
+                <a href="#team" class="me-3">Team</a>
+                <a href="#battles-expanded" class="me-3">Battles</a>
+                <a href="#news" class="me-3">News</a>
+                <a href="#about" class="me-3">About</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <!-- Hero Section -->
+    <header class="hero position-relative min-vh-100 d-flex align-items-end">
+        <div class="gradient-overlay"></div>
+        <div class="container position-relative animate-fadeInUp hero-content pb-5">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1 class="display-2 fw-bold mb-4 text-shadow animate-fadeInUp">SOLO LEVELING UNIVERSE</h1>
+                    <p class="lead mb-4 fs-3 animate-fadeInUp delay-200">Embark on an epic journey to become the ultimate hunter in a world of dungeons and monsters.</p>
+                    <button class="btn btn-outline-light btn-lg hover:bg-red-500 hover:border-red-500 transition-all duration-300 px-5 py-3 fs-4 animate-fadeInUp delay-400">
+                        ENTER THE WORLD
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Team Section -->
+    <section id="team" class="py-5">
+        <div class="container bg-blur rounded p-4">
+            <h2 class="text-center mb-5">MEET THE HEROES</h2>
+            <div class="row g-4">
+                <div class="col-md-4 col-lg-3">
+                    <div class="card bg-transparent text-white border-0 team-card">
+                        <img src="imgs/jinwoo.jpeg" class="card-img-top" alt="Player 1">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Sung Jin-Woo</h5>
+                            <p class="card-text text-gray-400">Shadow Monarch</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="card bg-transparent text-white border-0 team-card">
+                        <img src="imgs/beru.png" class="card-img-top" alt="Player 2">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Beru</h5>
+                            <p class="card-text text-gray-400">Ant King</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="card bg-transparent text-white border-0 team-card">
+                        <img src="imgs/igris.jpeg" class="card-img-top" alt="Player 3">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Igris</h5>
+                            <p class="card-text text-gray-400">Loyal Knight</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="card bg-transparent text-white border-0 team-card">
+                        <img src="imgs/tusk.png" class="card-img-top" alt="Player 4">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Tusk</h5>
+                            <p class="card-text text-gray-400">High Orc Shaman</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="card bg-transparent text-white border-0 team-card">
+                        <img src="imgs/cha.png" class="card-img-top" alt="Player 5">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Cha Hae-In</h5>
+                            <p class="card-text text-gray-400">Swordmaster</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="card bg-transparent text-white border-0 team-card">
+                        <img src="imgs/go.avif" class="card-img-top" alt="Player 6">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Go Gun-Hee</h5>
+                            <p class="card-text text-gray-400">Association President</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                  <div class="card bg-transparent text-white border-0 team-card">
+                      <img src="imgs/thomas.png" class="card-img-top" alt="Player 7">
+                      <div class="card-body text-center">
+                          <h5 class="card-title">Thomas Andre</h5>
+                          <p class="card-text text-gray-400">The Goliath</p>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4 col-lg-3">
+                  <div class="card bg-transparent text-white border-0 team-card">
+                      <img src="imgs/liu.png" class="card-img-top" alt="Player 8">
+                      <div class="card-body text-center">
+                          <h5 class="card-title">Liu Zhigang</h5>
+                          <p class="card-text text-gray-400">The Martial Emperor</p>
+                      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Battles Section -->
+    <section id="battles-expanded" class="py-5">
+      <div class="container bg-blur rounded p-4">
+          <h2 class="text-center mb-5">EPIC BATTLES CONTINUED</h2>
+          <div class="row g-4">
+              <div class="col-md-4">
+                  <div class="card battle-card">
+                      <img src="imgs/eternal.jpg" alt="Battle 1">
+                      <div class="card-body text-white">
+                          <h5 class="card-title">Battle of Eternal Night</h5>
+                          <p class="card-text">Sung Jin-Woo faces an army of shadows to protect humanity.</p>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="card battle-card">
+                      <img src="imgs/ant.jpg" alt="Battle 2">
+                      <div class="card-body text-white">
+                          <h5 class="card-title">Ant King's Last Stand</h5>
+                          <p class="card-text">Beru confronts his nemesis in a deadly duel for supremacy.</p>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="card battle-card">
+                      <img src="imgs/siege.avif" alt="Battle 3">
+                      <div class="card-body text-white">
+                          <h5 class="card-title">Siege of the Hunters</h5>
+                          <p class="card-text">A coalition of heroes unites to overcome the dungeon's deadliest creatures.</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row g-4 mt-4">
+              <div class="col-md-4">
+                  <div class="card battle-card">
+                      <img src="imgs/shadow.avif" alt="Battle 4">
+                      <div class="card-body text-white">
+                          <h5 class="card-title">Shadow Monarch Ascends</h5>
+                          <p class="card-text">Jin-Woo embraces his ultimate power in an epic showdown.</p>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="card battle-card">
+                      <img src="imgs/dungeon.avif" alt="Battle 5">
+                      <div class="card-body text-white">
+                          <h5 class="card-title">Dungeon Apocalypse</h5>
+                          <p class="card-text">Heroes battle across dimensions to save the collapsing realms.</p>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="card battle-card">
+                      <img src="imgs/dragon.avif" alt="Battle 6">
+                      <div class="card-body text-white">
+                          <h5 class="card-title">Dragon King Rebellion</h5>
+                          <p class="card-text">A cataclysmic battle erupts as the Dragon King defies destiny.</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- News Section -->
+<section id="news" class="py-5">
+  <div class="container bg-blur rounded p-4">
+    <h2 class="text-center mb-5">LATEST NEWS</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card news-card">
+          <img src="imgs/new.avif?height=200&width=400" class="card-img-top" alt="News 1">
+          <div class="card-body text-white">
+            <h5 class="card-title">New Dungeon Discovered</h5>
+            <p class="card-text">Explorers stumble upon a mysterious S-rank dungeon in the heart of the city.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card news-card">
+          <img src="imgs/hunter.avif?height=200&width=400" class="card-img-top" alt="News 2">
+          <div class="card-body text-white">
+            <h5 class="card-title">Hunter Association Update</h5>
+            <p class="card-text">New regulations implemented to ensure safer dungeon raids for all hunters.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card news-card">
+          <img src="imgs/shadow_new.avif?height=200&width=400" class="card-img-top" alt="News 3">
+          <div class="card-body text-white">
+            <h5 class="card-title">Shadow Monarch's Rise</h5>
+            <p class="card-text">Sung Jin-Woo's latest achievements send shockwaves through the hunter community.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+ <!-- Footer Section -->
+<footer>
+    <div class="container footer-content">
+        <h5 class="footer-title text-center">SOLO LEVELING UNIVERSE</h5>
+        <p class="text-center mb-4">Explore the adventures of the ultimate hunters and heroes.</p>
+        <div class="row">
+            <div id="about" class="col-md-4 footer-section">
+                <h6 class="text-uppercase fw-bold">About</h6>
+                <p>Dive into the immersive universe of Solo Leveling, where adventure knows no bounds and heroes rise to face unimaginable challenges.</p>
+            </div>
+            <div id="contact" class="col-md-4 footer-section">
+                <h6 class="text-uppercase fw-bold">Contact Us</h6>
+                <p>Email: <a href="/cdn-cgi/l/email-protection#6f060109002f1c000300030a190a03060108410c0002"><span class="__cf_email__" data-cfemail="244d4a424b64574b484b48415241484d4a430a474b49">[Solo&#160;Leveling]</span></a></p>
+                <p>Phone: +123-456-7890</p>
+            </div>
+            <div id="follow" class="col-md-4 footer-section">
+                <h6 class="text-uppercase fw-bold">Follow Us</h6>
+                <div class="d-flex justify-content-start mt-3">
+                    <a href="#" class="footer-icon me-3"><i data-lucide="twitter" class="text-red-500"></i></a>
+                    <a href="#" class="footer-icon me-3"><i data-lucide="instagram" class="text-red-500"></i></a>
+                    <a href="#" class="footer-icon"><i data-lucide="facebook" class="text-red-500"></i></a>
+                </div>
+            </div>
+        </div>
+        <p class="mt-4 text-center">&copy; 2025 Solo Leveling Universe. All rights reserved.</p>
+    </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  document.addEventListener('DOMContentLoaded', () => {
+    
+    function revealBattles() {
+      const battleCards = document.querySelectorAll('.battle-card, .news-card');
+      battleCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = `opacity 0.5s ease-out ${index * 0.2}s, transform 0.5s ease-out ${index * 0.2}s`;
+      });
+
+      function checkScroll() {
+        battleCards.forEach((card) => {
+          const cardTop = card.getBoundingClientRect().top;
+          const viewportHeight = window.innerHeight;
+          if (cardTop < viewportHeight - 50) {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }
+        });
+      }
+
+      window.addEventListener('scroll', checkScroll);
+      checkScroll();
+    }
+
+    revealBattles();
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const particleContainer = document.getElementById('particle-container');
+    const particleCount = 100;
+
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      
+      const size = Math.random() * 5 + 1;
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      
+      particle.style.background = `rgba(255, ${Math.random() * 100 + 50}, ${Math.random() * 50}, ${Math.random() * 0.5 + 0.5})`;
+      particle.style.position = 'absolute';
+      particle.style.top = `${Math.random() * 100}%`;
+      particle.style.left = `${Math.random() * 100}%`;
+      
+      const duration = Math.random() * 20 + 10;
+      particle.style.animation = `float ${duration}s linear infinite`;
+      
+      particleContainer.appendChild(particle);
+
+      setTimeout(() => {
+        particle.remove();
+        createParticle();
+      }, duration * 1000);
+    }
+
+    for (let i = 0; i < particleCount; i++) {
+      createParticle();
+    }
+  });
+</script>
+<script>
+  lucide.createIcons();
+</script>
+<script>
+function revealSections() {
+    const sections = document.querySelectorAll('section');
+    sections.forEach((section) => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const viewportHeight = window.innerHeight;
+        if (sectionTop < viewportHeight - 150) {
+            section.classList.add('animate-fadeInUp');
+        }
+    });
+}
+
+window.addEventListener('scroll', revealSections);
+revealSections();
+</script>
+</body>
+</html>
+
