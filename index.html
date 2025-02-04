@@ -339,10 +339,40 @@
 }
 
 @media (max-width: 991px) {
-    .navbar .footer-links {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  .navbar-collapse {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .navbar-collapse:not(.show) {
+    display: none;
+  }
+
+  .navbar-collapse.show {
+    display: flex;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-links a {
+    padding: 0.5rem 0;
+  }
+}
+
+
 
     .navbar .footer-links a {
         padding: 0.5rem 0;
